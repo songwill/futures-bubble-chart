@@ -33,7 +33,7 @@
             margin-bottom: 20px;
             font-size: 14px;
         }
-        .chart-container { position: relative; height: 600px; width: 100%; }
+        .chart-container { position: relative; height: 500px; width: 100%; }
         .legend-container {
             display: flex;
             justify-content: center;
@@ -68,6 +68,78 @@
         }
         .refresh-btn:hover { background: #2980b9; }
         .update-time { text-align: center; color: #888; font-size: 12px; margin-top: 10px; }
+
+        /* 信号筛选表格样式 */
+        .signal-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        .signal-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        .signal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .signal-panel {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        .signal-panel h3 {
+            font-size: 14px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .signal-panel.long h3 { color: #e74c3c; }
+        .signal-panel.short h3 { color: #27ae60; }
+        .signal-panel.change-up h3 { color: #f39c12; }
+        .signal-panel.change-down h3 { color: #3498db; }
+        .signal-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .signal-table th, .signal-table td {
+            padding: 6px 8px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .signal-table th {
+            background: #f5f5f5;
+            font-weight: bold;
+            color: #666;
+        }
+        .signal-table tr:hover {
+            background: #f0f0f0;
+        }
+        .signal-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge-long { background: #ffebee; color: #c62828; }
+        .badge-short { background: #e8f5e9; color: #2e7d32; }
+        .no-data {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+            font-size: 13px;
+        }
+        .section-divider {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px dashed #ddd;
+        }
     </style>
 </head>
 <body>
@@ -119,11 +191,61 @@
         </div>
 
         <div class="update-time" id="updateTime"></div>
+
+        <!-- 信号筛选区域 -->
+        <div class="signal-section" id="signalSection" style="display:none;">
+            <h2>🎯 交易信号筛选</h2>
+            <div class="signal-grid">
+                <!-- 做多信号：概率 >= 0.75 -->
+                <div class="signal-panel long">
+                    <h3>🔥 做多信号（概率 ≥ 0.75）</h3>
+                    <table class="signal-table">
+                        <thead>
+                            <tr><th>品种</th><th>概率</th><th>涨跌幅</th><th>增仓率</th></tr>
+                        </thead>
+                        <tbody id="longSignals"></tbody>
+                    </table>
+                </div>
+
+                <!-- 做空信号：概率 <= 0.35 -->
+                <div class="signal-panel short">
+                    <h3>📉 做空信号（概率 ≤ 0.35）</h3>
+                    <table class="signal-table">
+                        <thead>
+                            <tr><th>品种</th><th>概率</th><th>涨跌幅</th><th>增仓率</th></tr>
+                        </thead>
+                        <tbody id="shortSignals"></tbody>
+                    </table>
+                </div>
+
+                <!-- 概率上升：变动 > 0.25 -->
+                <div class="signal-panel change-up">
+                    <h3>⬆️ 概率上升（变动 > 0.25）</h3>
+                    <table class="signal-table">
+                        <thead>
+                            <tr><th>品种</th><th>变动</th><th>概率</th><th>涨跌幅</th></tr>
+                        </thead>
+                        <tbody id="changeUpSignals"></tbody>
+                    </table>
+                </div>
+
+                <!-- 概率下降：变动 < -0.3 -->
+                <div class="signal-panel change-down">
+                    <h3>⬇️ 概率下降（变动 < -0.3）</h3>
+                    <table class="signal-table">
+                        <thead>
+                            <tr><th>品种</th><th>变动</th><th>概率</th><th>涨跌幅</th></tr>
+                        </thead>
+                        <tbody id="changeDownSignals"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         // 内嵌数据（本地预览使用；GitHub Pages 上会被 fetch 覆盖）
-        const INLINE_DATA = {"data":[{"name":"沪金","changeRate":0.546,"positionChange":1.402,"volume":0.042,"nightSession":1},{"name":"沪银","changeRate":1.512,"positionChange":2.068,"volume":0.057,"nightSession":1},{"name":"沪铜","changeRate":0.409,"positionChange":-0.006,"volume":0.054,"nightSession":1},{"name":"沪锌","changeRate":-0.247,"positionChange":0.004,"volume":0.048,"nightSession":1},{"name":"沪锡","changeRate":1.286,"positionChange":10.39,"volume":0.12,"nightSession":1},{"name":"沪铅","changeRate":-0.648,"positionChange":-6.93,"volume":0.085,"nightSession":1},{"name":"沪铝","changeRate":-0.647,"positionChange":0.034,"volume":0.047,"nightSession":1},{"name":"铝合金","changeRate":-0.839,"positionChange":0.248,"volume":0.022,"nightSession":1},{"name":"沪镍","changeRate":-3.316,"positionChange":-1.309,"volume":0.188,"nightSession":1},{"name":"不锈钢","changeRate":-1.553,"positionChange":-2.984,"volume":0.091,"nightSession":1},{"name":"焦煤","changeRate":-1.332,"positionChange":3.039,"volume":0.092,"nightSession":1},{"name":"焦炭","changeRate":-1.25,"positionChange":0.027,"volume":0.202,"nightSession":1},{"name":"铁矿石","changeRate":-0.245,"positionChange":1.103,"volume":0.06,"nightSession":1},{"name":"螺纹钢","changeRate":0.092,"positionChange":1.955,"volume":0.129,"nightSession":1},{"name":"热卷","changeRate":-0.2,"positionChange":0.187,"volume":0.094,"nightSession":1},{"name":"原油","changeRate":-4.133,"positionChange":-4.161,"volume":0.127,"nightSession":1},{"name":"燃油","changeRate":-2.893,"positionChange":-3.16,"volume":0.133,"nightSession":1},{"name":"低硫燃油","changeRate":-4.619,"positionChange":-1.094,"volume":0.154,"nightSession":1},{"name":"沥青","changeRate":-1.752,"positionChange":-0.292,"volume":0.154,"nightSession":1},{"name":"LPG","changeRate":-3.25,"positionChange":0.224,"volume":0.176,"nightSession":1},{"name":"PX","changeRate":-2.214,"positionChange":-1.709,"volume":0.095,"nightSession":1},{"name":"PTA","changeRate":-1.856,"positionChange":0.229,"volume":0.149,"nightSession":1},{"name":"乙二醇","changeRate":-2.383,"positionChange":0.268,"volume":0.171,"nightSession":1},{"name":"短纤","changeRate":-1.789,"positionChange":1.657,"volume":0.104,"nightSession":1},{"name":"瓶片","changeRate":-2.249,"positionChange":1.906,"volume":0.094,"nightSession":1},{"name":"棉纱","changeRate":0.419,"positionChange":1.084,"volume":0.1,"nightSession":0},{"name":"纯苯","changeRate":-2.038,"positionChange":-3.639,"volume":0.22,"nightSession":0},{"name":"苯乙烯","changeRate":-2.461,"positionChange":-0.994,"volume":0.132,"nightSession":0},{"name":"丙烯","changeRate":-2.659,"positionChange":-0.475,"volume":0.084,"nightSession":0},{"name":"PP","changeRate":-2.734,"positionChange":-0.783,"volume":0.2,"nightSession":0},{"name":"塑料","changeRate":-2.557,"positionChange":-0.514,"volume":0.182,"nightSession":0},{"name":"PVC","changeRate":-1.936,"positionChange":3.428,"volume":0.148,"nightSession":0},{"name":"烧碱","changeRate":-0.616,"positionChange":1.55,"volume":0.093,"nightSession":0},{"name":"氧化铝","changeRate":0.035,"positionChange":2.11,"volume":0.095,"nightSession":0},{"name":"甲醇","changeRate":-2.66,"positionChange":0.648,"volume":0.305,"nightSession":1},{"name":"玻璃","changeRate":-0.094,"positionChange":0.87,"volume":0.024,"nightSession":0},{"name":"纯碱","changeRate":-0.395,"positionChange":2.885,"volume":0.112,"nightSession":0},{"name":"橡胶","changeRate":0.535,"positionChange":3.886,"volume":0.098,"nightSession":0},{"name":"20号胶","changeRate":0.848,"positionChange":-2.561,"volume":0.076,"nightSession":0},{"name":"合成橡胶","changeRate":-2.708,"positionChange":2.205,"volume":0.11,"nightSession":0},{"name":"纸浆","changeRate":-0.431,"positionChange":2.528,"volume":0.075,"nightSession":1},{"name":"双胶纸","changeRate":0.295,"positionChange":-0.432,"volume":0.007,"nightSession":0},{"name":"棕榈油","changeRate":-0.821,"positionChange":2.952,"volume":0.129,"nightSession":1},{"name":"菜油","changeRate":-0.513,"positionChange":2.411,"volume":0.075,"nightSession":1},{"name":"豆油","changeRate":-0.577,"positionChange":0.959,"volume":0.079,"nightSession":1},{"name":"豆一","changeRate":0.082,"positionChange":1.024,"volume":0.069,"nightSession":0},{"name":"豆二","changeRate":-0.192,"positionChange":1.599,"volume":0.06,"nightSession":0},{"name":"豆粕","changeRate":0.1,"positionChange":0.774,"volume":0.054,"nightSession":1},{"name":"菜粕","changeRate":-0.084,"positionChange":1.635,"volume":0.068,"nightSession":1},{"name":"玉米","changeRate":-0.502,"positionChange":-0.955,"volume":0.153,"nightSession":0},{"name":"玉米淀粉","changeRate":-0.656,"positionChange":-0.606,"volume":0.126,"nightSession":0},{"name":"棉花","changeRate":0.808,"positionChange":2.859,"volume":0.143,"nightSession":1},{"name":"白糖","changeRate":-0.221,"positionChange":1.191,"volume":0.12,"nightSession":1}],"updatedAt":"2026-05-06T15:00:00+08:00"};
+        const INLINE_DATA = {"data":[{"name":"沪金","changeRate":0.546,"positionChange":1.402,"volume":0.042,"nightSession":1,"probability":0.72,"change":0.05},{"name":"沪银","changeRate":1.512,"positionChange":2.068,"volume":0.057,"nightSession":1,"probability":0.78,"change":0.08},{"name":"沪铜","changeRate":0.409,"positionChange":-0.006,"volume":0.054,"nightSession":1,"probability":0.55,"change":-0.02},{"name":"沪锌","changeRate":-0.247,"positionChange":0.004,"volume":0.048,"nightSession":1,"probability":0.42,"change":-0.05},{"name":"沪锡","changeRate":1.286,"positionChange":10.39,"volume":0.12,"nightSession":1,"probability":0.82,"change":0.12},{"name":"沪铅","changeRate":-0.648,"positionChange":-6.93,"volume":0.085,"nightSession":1,"probability":0.28,"change":-0.15},{"name":"沪铝","changeRate":-0.647,"positionChange":0.034,"volume":0.047,"nightSession":1,"probability":0.38,"change":-0.08},{"name":"沪镍","changeRate":-3.316,"positionChange":-1.309,"volume":0.188,"nightSession":1,"probability":0.25,"change":-0.22},{"name":"焦煤","changeRate":-1.332,"positionChange":3.039,"volume":0.092,"nightSession":1,"probability":0.35,"change":-0.12},{"name":"原油","changeRate":-4.133,"positionChange":-4.161,"volume":0.127,"nightSession":1,"probability":0.22,"change":-0.35},{"name":"PTA","changeRate":-1.856,"positionChange":0.229,"volume":0.149,"nightSession":1,"probability":0.45,"change":0.02},{"name":"甲醇","changeRate":-2.66,"positionChange":0.648,"volume":0.305,"nightSession":1,"probability":0.32,"change":-0.18},{"name":"豆粕","changeRate":0.1,"positionChange":0.774,"volume":0.054,"nightSession":1,"probability":0.68,"change":0.28},{"name":"棉花","changeRate":0.808,"positionChange":2.859,"volume":0.143,"nightSession":1,"probability":0.76,"change":0.15}],"updatedAt":"2026-05-07T09:00:00+08:00"};
 
         let chart = null;
 
@@ -168,7 +290,6 @@
             const hour = now.getHours();
             const minute = now.getMinutes();
             const timeValue = hour * 60 + minute;
-            // 21:00 = 1260分钟, 8:55 = 535分钟
             return timeValue >= 1260 || timeValue <= 535;
         }
 
@@ -180,16 +301,65 @@
             return data;
         }
 
+        // 渲染信号表格
+        function renderSignalTables(data) {
+            // 做多信号：概率 >= 0.75
+            const longSignals = data.filter(d => d.probability !== undefined && d.probability >= 0.75)
+                .sort((a, b) => b.probability - a.probability);
+            renderTable('longSignals', longSignals, ['name', 'probability', 'changeRate', 'positionChange'], ['品种', '概率', '涨跌幅%', '增仓率%']);
+
+            // 做空信号：概率 <= 0.35
+            const shortSignals = data.filter(d => d.probability !== undefined && d.probability <= 0.35)
+                .sort((a, b) => a.probability - b.probability);
+            renderTable('shortSignals', shortSignals, ['name', 'probability', 'changeRate', 'positionChange'], ['品种', '概率', '涨跌幅%', '增仓率%']);
+
+            // 概率上升：变动 > 0.25
+            const changeUpSignals = data.filter(d => d.change !== undefined && d.change > 0.25)
+                .sort((a, b) => b.change - a.change);
+            renderTable('changeUpSignals', changeUpSignals, ['name', 'change', 'probability', 'changeRate'], ['品种', '变动', '概率', '涨跌幅%']);
+
+            // 概率下降：变动 < -0.3
+            const changeDownSignals = data.filter(d => d.change !== undefined && d.change < -0.3)
+                .sort((a, b) => a.change - b.change);
+            renderTable('changeDownSignals', changeDownSignals, ['name', 'change', 'probability', 'changeRate'], ['品种', '变动', '概率', '涨跌幅%']);
+        }
+
+        // 渲染单个表格
+        function renderTable(tbodyId, data, fields, headers) {
+            const tbody = document.getElementById(tbodyId);
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="10" class="no-data">暂无符合条件的数据</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = data.map(item => {
+                return '<tr>' + fields.map((field, i) => {
+                    let value = item[field];
+                    let formatted;
+                    if (field === 'probability') {
+                        formatted = value.toFixed(3);
+                    } else if (field === 'changeRate' || field === 'positionChange') {
+                        formatted = value.toFixed(2) + '%';
+                    } else if (field === 'change') {
+                        formatted = (value > 0 ? '+' : '') + value.toFixed(3);
+                    } else {
+                        formatted = value;
+                    }
+                    return `<td>${formatted}</td>`;
+                }).join('') + '</tr>';
+            }).join('');
+        }
+
         async function loadData() {
             document.getElementById('loading').style.display = 'block';
             document.getElementById('error').style.display = 'none';
             document.querySelector('.chart-container').style.display = 'none';
             document.querySelector('.legend-container').style.display = 'none';
             document.querySelector('.stats').style.display = 'none';
+            document.getElementById('signalSection').style.display = 'none';
 
             try {
                 let json;
-                // file:// 协议（本地预览）直接用内嵌数据，避免 fetch 跨域限制
                 if (location.protocol === 'file:') {
                     json = INLINE_DATA;
                 } else {
@@ -197,14 +367,14 @@
                     if (!response.ok) throw new Error('数据加载失败');
                     json = await response.json();
                 }
-                
-                // 根据时间筛选数据：夜盘时段(21:00-次日8:55)只显示夜盘品种
+
                 const filteredData = filterBySession(json.data.filter(d => d.positionChange !== 0));
 
                 document.getElementById('loading').style.display = 'none';
                 document.querySelector('.chart-container').style.display = 'block';
                 document.querySelector('.legend-container').style.display = 'flex';
                 document.querySelector('.stats').style.display = 'flex';
+                document.getElementById('signalSection').style.display = 'block';
 
                 // 更新统计
                 document.getElementById('dataCount').textContent = filteredData.length;
@@ -214,13 +384,16 @@
                 document.getElementById('xRange').textContent = Math.min(...positions).toFixed(2) + '% ~ ' + Math.max(...positions).toFixed(2) + '%';
                 document.getElementById('updateTime').textContent = '数据更新时间: ' + new Date(json.updatedAt).toLocaleString('zh-CN') + ' | ' + (isNightSessionTime() ? '🌙 夜盘时段（仅夜盘品种）' : '☀️ 日盘时段（全部品种）');
 
-                // 准备气泡数据（气泡大小根据当前成交量变动）
+                // 渲染信号表格
+                renderSignalTables(filteredData);
+
+                // 准备气泡数据
                 const bubbleData = filteredData.map(d => {
                     const color = getColor(d.changeRate, d.positionChange);
                     return {
                         x: d.positionChange,
                         y: d.changeRate,
-                        r: Math.sqrt(d.volume) * 50 + 10,  // 气泡大小根据成交量
+                        r: Math.sqrt(d.volume) * 50 + 10,
                         name: d.name,
                         changeRate: d.changeRate,
                         positionChange: d.positionChange,
@@ -254,12 +427,20 @@
                                 callbacks: {
                                     label: function(context) {
                                         const point = bubbleData[context.dataIndex];
-                                        return [
+                                        const tooltip = [
                                             '商品: ' + point.name,
                                             '涨跌幅: ' + point.changeRate.toFixed(2) + '%',
                                             '增仓率: ' + point.positionChange.toFixed(2) + '%',
                                             '成交量: ' + point.volume.toFixed(3)
                                         ];
+                                        const item = filteredData.find(d => d.name === point.name);
+                                        if (item && item.probability !== undefined) {
+                                            tooltip.push('概率: ' + item.probability.toFixed(3));
+                                        }
+                                        if (item && item.change !== undefined) {
+                                            tooltip.push('变动: ' + (item.change > 0 ? '+' : '') + item.change.toFixed(3));
+                                        }
+                                        return tooltip;
                                     }
                                 }
                             }
@@ -278,7 +459,6 @@
                     plugins: [centerLabelPlugin]
                 });
 
-                // 保存数据引用供插件使用
                 chart._bubbleData = bubbleData;
 
             } catch (error) {
@@ -288,7 +468,6 @@
             }
         }
 
-        // 页面加载时自动读取数据
         loadData();
     </script>
 </body>
