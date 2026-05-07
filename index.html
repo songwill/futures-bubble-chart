@@ -328,7 +328,7 @@
         function renderTable(tbodyId, data, fields, headers) {
             const tbody = document.getElementById(tbodyId);
             if (data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="10" class="no-data">暂无符合条件的数据</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" class="no-data">暂无符合条件的数据</td></tr>';
                 return;
             }
 
@@ -387,13 +387,18 @@
                 // 渲染信号表格
                 renderSignalTables(filteredData);
 
-                // 准备气泡数据
+                // 准备气泡数据：成交量标准化到 8-60 像素
+                const volumes = filteredData.map(d => d.volume);
+                const minVol = Math.min(...volumes);
+                const maxVol = Math.max(...volumes);
                 const bubbleData = filteredData.map(d => {
                     const color = getColor(d.changeRate, d.positionChange);
+                    // sqrt 缩放，映射到 8-60 像素
+                    const r = 8 + (Math.sqrt(d.volume) - Math.sqrt(minVol)) / (Math.sqrt(maxVol) - Math.sqrt(minVol)) * 52;
                     return {
                         x: d.positionChange,
                         y: d.changeRate,
-                        r: Math.sqrt(d.volume) * 50 + 10,
+                        r: r,
                         name: d.name,
                         changeRate: d.changeRate,
                         positionChange: d.positionChange,
