@@ -1,491 +1,491 @@
 {
-    "data":  [
-                 {
-                     "name":  "沪金",
-                     "changeRate":  0.546,
-                     "positionChange":  1.402,
-                     "volume":  0.042,
-                     "nightSession":  1,
-                     "probability":  0.75,
-                     "change":  0.208
-                 },
-                 {
-                     "name":  "沪银",
-                     "changeRate":  1.512,
-                     "positionChange":  2.068,
-                     "volume":  0.057,
-                     "nightSession":  1,
-                     "probability":  0.714,
-                     "change":  0.173
-                 },
-                 {
-                     "name":  "沪铜",
-                     "changeRate":  0.409,
-                     "positionChange":  -0.006,
-                     "volume":  0.054,
-                     "nightSession":  1,
-                     "probability":  0.75,
-                     "change":  0.104
-                 },
-                 {
-                     "name":  "沪锌",
-                     "changeRate":  -0.247,
-                     "positionChange":  0.004,
-                     "volume":  0.048,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.083
-                 },
-                 {
-                     "name":  "沪锡",
-                     "changeRate":  1.286,
-                     "positionChange":  10.39,
-                     "volume":  0.12,
-                     "nightSession":  1,
-                     "probability":  0.75,
-                     "change":  0.021
-                 },
-                 {
-                     "name":  "沪铅",
-                     "changeRate":  -0.648,
-                     "positionChange":  -6.93,
-                     "volume":  0.085,
-                     "nightSession":  1,
-                     "probability":  0.464,
-                     "change":  -0.244
-                 },
-                 {
-                     "name":  "沪铝",
-                     "changeRate":  -0.647,
-                     "positionChange":  0.034,
-                     "volume":  0.047,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  -0.164
-                 },
-                 {
-                     "name":  "铝合金",
-                     "changeRate":  -0.839,
-                     "positionChange":  0.248,
-                     "volume":  0.022,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  -0.185
-                 },
-                 {
-                     "name":  "沪镍",
-                     "changeRate":  -3.316,
-                     "positionChange":  -1.309,
-                     "volume":  0.188,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  -0.268
-                 },
-                 {
-                     "name":  "不锈钢",
-                     "changeRate":  -1.553,
-                     "positionChange":  -2.984,
-                     "volume":  0.091,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.229
-                 },
-                 {
-                     "name":  "焦煤",
-                     "changeRate":  -1.332,
-                     "positionChange":  3.039,
-                     "volume":  0.092,
-                     "nightSession":  1,
-                     "probability":  0.429,
-                     "change":  -0.217
-                 },
-                 {
-                     "name":  "焦炭",
-                     "changeRate":  -1.25,
-                     "positionChange":  0.027,
-                     "volume":  0.202,
-                     "nightSession":  1,
-                     "probability":  0.429,
-                     "change":  -0.259
-                 },
-                 {
-                     "name":  "铁矿石",
-                     "changeRate":  -0.245,
-                     "positionChange":  1.103,
-                     "volume":  0.06,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.333
-                 },
-                 {
-                     "name":  "螺纹钢",
-                     "changeRate":  0.092,
-                     "positionChange":  1.955,
-                     "volume":  0.129,
-                     "nightSession":  1,
-                     "probability":  0.75,
-                     "change":  -0.021
-                 },
-                 {
-                     "name":  "热卷",
-                     "changeRate":  -0.2,
-                     "positionChange":  0.187,
-                     "volume":  0.094,
-                     "nightSession":  1,
-                     "probability":  0.536,
-                     "change":  -0.277
-                 },
-                 {
-                     "name":  "原油",
-                     "changeRate":  -4.133,
-                     "positionChange":  -4.161,
-                     "volume":  0.127,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.158
-                 },
-                 {
-                     "name":  "燃油",
-                     "changeRate":  -2.893,
-                     "positionChange":  -3.16,
-                     "volume":  0.133,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.491
-                 },
-                 {
-                     "name":  "低硫燃油",
-                     "changeRate":  -4.619,
-                     "positionChange":  -1.094,
-                     "volume":  0.154,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.449
-                 },
-                 {
-                     "name":  "沥青",
-                     "changeRate":  -1.752,
-                     "positionChange":  -0.292,
-                     "volume":  0.154,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.47
-                 },
-                 {
-                     "name":  "LPG",
-                     "changeRate":  -3.25,
-                     "positionChange":  0.224,
-                     "volume":  0.176,
-                     "nightSession":  1,
-                     "probability":  0.25,
-                     "change":  -0.521
-                 },
-                 {
-                     "name":  "对二甲苯",
-                     "changeRate":  -2.214,
-                     "positionChange":  -1.709,
-                     "volume":  0.095,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.324
-                 },
-                 {
-                     "name":  "PTA",
-                     "changeRate":  -1.856,
-                     "positionChange":  0.229,
-                     "volume":  0.149,
-                     "nightSession":  1,
-                     "probability":  0.25,
-                     "change":  -0.583
-                 },
-                 {
-                     "name":  "乙二醇",
-                     "changeRate":  -2.383,
-                     "positionChange":  0.268,
-                     "volume":  0.171,
-                     "nightSession":  1,
-                     "probability":  0.25,
-                     "change":  -0.625
-                 },
-                 {
-                     "name":  "短纤",
-                     "changeRate":  -1.789,
-                     "positionChange":  1.657,
-                     "volume":  0.104,
-                     "nightSession":  1,
-                     "probability":  0.25,
-                     "change":  -0.396
-                 },
-                 {
-                     "name":  "瓶片",
-                     "changeRate":  -2.249,
-                     "positionChange":  1.906,
-                     "volume":  0.094,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  -0.497
-                 },
-                 {
-                     "name":  "棉纱",
-                     "changeRate":  0.419,
-                     "positionChange":  1.084,
-                     "volume":  0.1,
-                     "nightSession":  1,
-                     "probability":  0.607,
-                     "change":  -0.101
-                 },
-                 {
-                     "name":  "纯苯",
-                     "changeRate":  -2.038,
-                     "positionChange":  -3.639,
-                     "volume":  0.22,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.324
-                 },
-                 {
-                     "name":  "苯乙烯",
-                     "changeRate":  -2.461,
-                     "positionChange":  -0.994,
-                     "volume":  0.132,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.179
-                 },
-                 {
-                     "name":  "丙烯",
-                     "changeRate":  -2.659,
-                     "positionChange":  -0.475,
-                     "volume":  0.084,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.533
-                 },
-                 {
-                     "name":  "聚丙烯",
-                     "changeRate":  -2.734,
-                     "positionChange":  -0.783,
-                     "volume":  0.2,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.554
-                 },
-                 {
-                     "name":  "塑料",
-                     "changeRate":  -2.557,
-                     "positionChange":  -0.514,
-                     "volume":  0.182,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.554
-                 },
-                 {
-                     "name":  "PVC",
-                     "changeRate":  -1.936,
-                     "positionChange":  3.428,
-                     "volume":  0.148,
-                     "nightSession":  1,
-                     "probability":  0.25,
-                     "change":  -0.229
-                 },
-                 {
-                     "name":  "烧碱",
-                     "changeRate":  -0.616,
-                     "positionChange":  1.55,
-                     "volume":  0.093,
-                     "nightSession":  1,
-                     "probability":  0.607,
-                     "change":  0.024
-                 },
-                 {
-                     "name":  "氧化铝",
-                     "changeRate":  0.035,
-                     "positionChange":  2.11,
-                     "volume":  0.095,
-                     "nightSession":  1,
-                     "probability":  0.75,
-                     "change":  0.271
-                 },
-                 {
-                     "name":  "甲醇",
-                     "changeRate":  -2.66,
-                     "positionChange":  0.648,
-                     "volume":  0.305,
-                     "nightSession":  1,
-                     "probability":  0.25,
-                     "change":  -0.562
-                 },
-                 {
-                     "name":  "玻璃",
-                     "changeRate":  -0.094,
-                     "positionChange":  0.87,
-                     "volume":  0.024,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.042
-                 },
-                 {
-                     "name":  "纯碱",
-                     "changeRate":  -0.395,
-                     "positionChange":  2.885,
-                     "volume":  0.112,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.125
-                 },
-                 {
-                     "name":  "橡胶",
-                     "changeRate":  0.535,
-                     "positionChange":  3.886,
-                     "volume":  0.098,
-                     "nightSession":  1,
-                     "probability":  0.643,
-                     "change":  -0.086
-                 },
-                 {
-                     "name":  "20号胶",
-                     "changeRate":  0.848,
-                     "positionChange":  -2.561,
-                     "volume":  0.076,
-                     "nightSession":  1,
-                     "probability":  0.571,
-                     "change":  -0.074
-                 },
-                 {
-                     "name":  "合成橡胶",
-                     "changeRate":  -2.708,
-                     "positionChange":  2.205,
-                     "volume":  0.11,
-                     "nightSession":  1,
-                     "probability":  0.214,
-                     "change":  -0.348
-                 },
-                 {
-                     "name":  "纸浆",
-                     "changeRate":  -0.431,
-                     "positionChange":  2.528,
-                     "volume":  0.075,
-                     "nightSession":  1,
-                     "probability":  0.429,
-                     "change":  -0.176
-                 },
-                 {
-                     "name":  "双胶纸",
-                     "changeRate":  0.295,
-                     "positionChange":  -0.432,
-                     "volume":  0.007,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.062
-                 },
-                 {
-                     "name":  "棕榈油",
-                     "changeRate":  -0.821,
-                     "positionChange":  2.952,
-                     "volume":  0.129,
-                     "nightSession":  1,
-                     "probability":  0.286,
-                     "change":  -0.36
-                 },
-                 {
-                     "name":  "菜油",
-                     "changeRate":  -0.513,
-                     "positionChange":  2.411,
-                     "volume":  0.075,
-                     "nightSession":  1,
-                     "probability":  0.214,
-                     "change":  -0.494
-                 },
-                 {
-                     "name":  "豆油",
-                     "changeRate":  -0.577,
-                     "positionChange":  0.959,
-                     "volume":  0.079,
-                     "nightSession":  1,
-                     "probability":  0.429,
-                     "change":  -0.301
-                 },
-                 {
-                     "name":  "豆一",
-                     "changeRate":  0.082,
-                     "positionChange":  1.024,
-                     "volume":  0.069,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  0.065
-                 },
-                 {
-                     "name":  "豆二",
-                     "changeRate":  -0.192,
-                     "positionChange":  1.599,
-                     "volume":  0.06,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  -0.122
-                 },
-                 {
-                     "name":  "豆粕",
-                     "changeRate":  0.1,
-                     "positionChange":  0.774,
-                     "volume":  0.054,
-                     "nightSession":  1,
-                     "probability":  0.571,
-                     "change":  0.092
-                 },
-                 {
-                     "name":  "菜粕",
-                     "changeRate":  -0.084,
-                     "positionChange":  1.635,
-                     "volume":  0.068,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  -0.122
-                 },
-                 {
-                     "name":  "玉米",
-                     "changeRate":  -0.502,
-                     "positionChange":  -0.955,
-                     "volume":  0.153,
-                     "nightSession":  1,
-                     "probability":  0.357,
-                     "change":  0.003
-                 },
-                 {
-                     "name":  "玉米淀粉",
-                     "changeRate":  -0.656,
-                     "positionChange":  -0.606,
-                     "volume":  0.126,
-                     "nightSession":  1,
-                     "probability":  0.286,
-                     "change":  0.015
-                 },
-                 {
-                     "name":  "棉花",
-                     "changeRate":  0.808,
-                     "positionChange":  2.859,
-                     "volume":  0.143,
-                     "nightSession":  1,
-                     "probability":  0.607,
-                     "change":  -0.101
-                 },
-                 {
-                     "name":  "白糖",
-                     "changeRate":  -0.221,
-                     "positionChange":  1.191,
-                     "volume":  0.12,
-                     "nightSession":  1,
-                     "probability":  0.321,
-                     "change":  -0.283
-                 },
-                 {
-                     "name":  "PVC月均价",
-                     "changeRate":  -1.937,
-                     "positionChange":  -3.149,
-                     "volume":  0.071,
-                     "nightSession":  1,
-                     "probability":  0.5,
-                     "change":  -0.062
-                 }
-             ],
-    "updatedAt":  "2026-05-07T15:03:10.4254118+08:00"
+  "data": [
+    {
+      "name": "沪金",
+      "changeRate": 0.546,
+      "positionChange": 1.402,
+      "volume": 160220.5,
+      "nightSession": 1,
+      "probability": 0.75,
+      "change": 0.208
+    },
+    {
+      "name": "沪银",
+      "changeRate": 1.512,
+      "positionChange": 2.068,
+      "volume": 379416.5,
+      "nightSession": 1,
+      "probability": 0.714,
+      "change": 0.173
+    },
+    {
+      "name": "沪铜",
+      "changeRate": 0.409,
+      "positionChange": -0.006,
+      "volume": 76376.5,
+      "nightSession": 1,
+      "probability": 0.75,
+      "change": 0.104
+    },
+    {
+      "name": "沪锌",
+      "changeRate": -0.247,
+      "positionChange": 0.004,
+      "volume": 97583.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.083
+    },
+    {
+      "name": "沪锡",
+      "changeRate": 1.286,
+      "positionChange": 10.39,
+      "volume": 178580.0,
+      "nightSession": 1,
+      "probability": 0.75,
+      "change": 0.021
+    },
+    {
+      "name": "沪铅",
+      "changeRate": -0.648,
+      "positionChange": -6.93,
+      "volume": 74712.0,
+      "nightSession": 1,
+      "probability": 0.464,
+      "change": -0.244
+    },
+    {
+      "name": "沪铝",
+      "changeRate": -0.647,
+      "positionChange": 0.034,
+      "volume": 174071.0,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": -0.164
+    },
+    {
+      "name": "铝合金",
+      "changeRate": -0.839,
+      "positionChange": 0.248,
+      "volume": 5218.0,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": -0.185
+    },
+    {
+      "name": "沪镍",
+      "changeRate": -3.316,
+      "positionChange": -1.309,
+      "volume": 323537.0,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": -0.268
+    },
+    {
+      "name": "不锈钢",
+      "changeRate": -1.553,
+      "positionChange": -2.984,
+      "volume": 273429.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.229
+    },
+    {
+      "name": "焦煤",
+      "changeRate": -1.332,
+      "positionChange": 3.039,
+      "volume": 578943.0,
+      "nightSession": 1,
+      "probability": 0.429,
+      "change": -0.217
+    },
+    {
+      "name": "焦炭",
+      "changeRate": -1.25,
+      "positionChange": 0.027,
+      "volume": 13692.5,
+      "nightSession": 1,
+      "probability": 0.429,
+      "change": -0.259
+    },
+    {
+      "name": "铁矿石",
+      "changeRate": -0.245,
+      "positionChange": 1.103,
+      "volume": 266878.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.333
+    },
+    {
+      "name": "螺纹钢",
+      "changeRate": 0.092,
+      "positionChange": 1.955,
+      "volume": 680996.5,
+      "nightSession": 1,
+      "probability": 0.75,
+      "change": -0.021
+    },
+    {
+      "name": "热卷",
+      "changeRate": -0.2,
+      "positionChange": 0.187,
+      "volume": 542734.0,
+      "nightSession": 1,
+      "probability": 0.536,
+      "change": -0.277
+    },
+    {
+      "name": "原油",
+      "changeRate": -4.133,
+      "positionChange": -4.161,
+      "volume": 34553.0,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.158
+    },
+    {
+      "name": "燃油",
+      "changeRate": -2.893,
+      "positionChange": -3.16,
+      "volume": 274864.0,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.491
+    },
+    {
+      "name": "低硫燃油",
+      "changeRate": -4.619,
+      "positionChange": -1.094,
+      "volume": 55053.5,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.449
+    },
+    {
+      "name": "沥青",
+      "changeRate": -1.752,
+      "positionChange": -0.292,
+      "volume": 342322.0,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.47
+    },
+    {
+      "name": "LPG",
+      "changeRate": -3.25,
+      "positionChange": 0.224,
+      "volume": 73045.5,
+      "nightSession": 1,
+      "probability": 0.25,
+      "change": -0.521
+    },
+    {
+      "name": "对二甲苯",
+      "changeRate": -2.214,
+      "positionChange": -1.709,
+      "volume": 238559.5,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.324
+    },
+    {
+      "name": "PTA",
+      "changeRate": -1.856,
+      "positionChange": 0.229,
+      "volume": 734215.5,
+      "nightSession": 1,
+      "probability": 0.25,
+      "change": -0.583
+    },
+    {
+      "name": "乙二醇",
+      "changeRate": -2.383,
+      "positionChange": 0.268,
+      "volume": 347125.5,
+      "nightSession": 1,
+      "probability": 0.25,
+      "change": -0.625
+    },
+    {
+      "name": "短纤",
+      "changeRate": -1.789,
+      "positionChange": 1.657,
+      "volume": 142384.0,
+      "nightSession": 1,
+      "probability": 0.25,
+      "change": -0.396
+    },
+    {
+      "name": "瓶片",
+      "changeRate": -2.249,
+      "positionChange": 1.906,
+      "volume": 74588.5,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": -0.497
+    },
+    {
+      "name": "棉纱",
+      "changeRate": 0.419,
+      "positionChange": 1.084,
+      "volume": 9266.5,
+      "nightSession": 1,
+      "probability": 0.607,
+      "change": -0.101
+    },
+    {
+      "name": "纯苯",
+      "changeRate": -2.038,
+      "positionChange": -3.639,
+      "volume": 11601.5,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.324
+    },
+    {
+      "name": "苯乙烯",
+      "changeRate": -2.461,
+      "positionChange": -0.994,
+      "volume": 239508.5,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.179
+    },
+    {
+      "name": "丙烯",
+      "changeRate": -2.659,
+      "positionChange": -0.475,
+      "volume": 6591.5,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.533
+    },
+    {
+      "name": "聚丙烯",
+      "changeRate": -2.734,
+      "positionChange": -0.783,
+      "volume": 427704.5,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.554
+    },
+    {
+      "name": "塑料",
+      "changeRate": -2.557,
+      "positionChange": -0.514,
+      "volume": 375940.0,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.554
+    },
+    {
+      "name": "PVC",
+      "changeRate": -1.936,
+      "positionChange": 3.428,
+      "volume": 947967.5,
+      "nightSession": 1,
+      "probability": 0.25,
+      "change": -0.229
+    },
+    {
+      "name": "烧碱",
+      "changeRate": -0.616,
+      "positionChange": 1.55,
+      "volume": 368075.5,
+      "nightSession": 1,
+      "probability": 0.607,
+      "change": 0.024
+    },
+    {
+      "name": "氧化铝",
+      "changeRate": 0.035,
+      "positionChange": 2.11,
+      "volume": 267465.0,
+      "nightSession": 1,
+      "probability": 0.75,
+      "change": 0.271
+    },
+    {
+      "name": "甲醇",
+      "changeRate": -2.66,
+      "positionChange": 0.648,
+      "volume": 526677.0,
+      "nightSession": 1,
+      "probability": 0.25,
+      "change": -0.562
+    },
+    {
+      "name": "玻璃",
+      "changeRate": -0.094,
+      "positionChange": 0.87,
+      "volume": 1119216.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.042
+    },
+    {
+      "name": "纯碱",
+      "changeRate": -0.395,
+      "positionChange": 2.885,
+      "volume": 632801.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.125
+    },
+    {
+      "name": "橡胶",
+      "changeRate": 0.535,
+      "positionChange": 3.886,
+      "volume": 261612.0,
+      "nightSession": 1,
+      "probability": 0.643,
+      "change": -0.086
+    },
+    {
+      "name": "20号胶",
+      "changeRate": 0.848,
+      "positionChange": -2.561,
+      "volume": 55866.0,
+      "nightSession": 1,
+      "probability": 0.571,
+      "change": -0.074
+    },
+    {
+      "name": "合成橡胶",
+      "changeRate": -2.708,
+      "positionChange": 2.205,
+      "volume": 261576.0,
+      "nightSession": 1,
+      "probability": 0.214,
+      "change": -0.348
+    },
+    {
+      "name": "纸浆",
+      "changeRate": -0.431,
+      "positionChange": 2.528,
+      "volume": 165467.0,
+      "nightSession": 1,
+      "probability": 0.429,
+      "change": -0.176
+    },
+    {
+      "name": "双胶纸",
+      "changeRate": 0.295,
+      "positionChange": -0.432,
+      "volume": 1587.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.062
+    },
+    {
+      "name": "棕榈油",
+      "changeRate": -0.821,
+      "positionChange": 2.952,
+      "volume": 461810.5,
+      "nightSession": 1,
+      "probability": 0.286,
+      "change": -0.36
+    },
+    {
+      "name": "菜油",
+      "changeRate": -0.513,
+      "positionChange": 2.411,
+      "volume": 163789.5,
+      "nightSession": 1,
+      "probability": 0.214,
+      "change": -0.494
+    },
+    {
+      "name": "豆油",
+      "changeRate": -0.577,
+      "positionChange": 0.959,
+      "volume": 249686.0,
+      "nightSession": 1,
+      "probability": 0.429,
+      "change": -0.301
+    },
+    {
+      "name": "豆一",
+      "changeRate": 0.082,
+      "positionChange": 1.024,
+      "volume": 273172.5,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": 0.065
+    },
+    {
+      "name": "豆二",
+      "changeRate": -0.192,
+      "positionChange": 1.599,
+      "volume": 141606.0,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": -0.122
+    },
+    {
+      "name": "豆粕",
+      "changeRate": 0.1,
+      "positionChange": 0.774,
+      "volume": 921135.5,
+      "nightSession": 1,
+      "probability": 0.571,
+      "change": 0.092
+    },
+    {
+      "name": "菜粕",
+      "changeRate": -0.084,
+      "positionChange": 1.635,
+      "volume": 503189.0,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": -0.122
+    },
+    {
+      "name": "玉米",
+      "changeRate": -0.502,
+      "positionChange": -0.955,
+      "volume": 798990.5,
+      "nightSession": 1,
+      "probability": 0.357,
+      "change": 0.003
+    },
+    {
+      "name": "玉米淀粉",
+      "changeRate": -0.656,
+      "positionChange": -0.606,
+      "volume": 179851.5,
+      "nightSession": 1,
+      "probability": 0.286,
+      "change": 0.015
+    },
+    {
+      "name": "棉花",
+      "changeRate": 0.808,
+      "positionChange": 2.859,
+      "volume": 490972.0,
+      "nightSession": 1,
+      "probability": 0.607,
+      "change": -0.101
+    },
+    {
+      "name": "白糖",
+      "changeRate": -0.221,
+      "positionChange": 1.191,
+      "volume": 392329.0,
+      "nightSession": 1,
+      "probability": 0.321,
+      "change": -0.283
+    },
+    {
+      "name": "PVC月均价",
+      "changeRate": -1.937,
+      "positionChange": -3.149,
+      "volume": 4790.0,
+      "nightSession": 1,
+      "probability": 0.5,
+      "change": -0.062
+    }
+  ],
+  "updatedAt": "2026-05-07T16:11:48.563001+08:00"
 }
