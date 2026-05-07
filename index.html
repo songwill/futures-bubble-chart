@@ -142,105 +142,22 @@
             return colors.downLeft;
         }
 
-        // 智能防重叠标签
-        const labelPlugin = {
-            id: 'commodityLabels',
+        // 气泡中心标签
+        const centerLabelPlugin = {
+            id: 'centerLabels',
             afterDatasetsDraw: (chart) => {
                 const ctx = chart.ctx;
-                const chartArea = chart.chartArea;
-                const labelPositions = [];
+                ctx.font = 'bold 11px Microsoft YaHei';
+                ctx.fillStyle = '#333';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
 
-                const estimateLabelSize = (name) => {
-                    ctx.font = 'bold 11px Microsoft YaHei';
-                    return { width: ctx.measureText(name).width + 12, height: 18 };
-                };
-
-                const rectsOverlap = (r1, r2, padding = 3) => {
-                    return !(r1.right + padding < r2.left || r1.left - padding > r2.right ||
-                             r1.bottom + padding < r2.top || r1.top - padding > r2.bottom);
-                };
-
-                const findNonOverlappingPosition = (labelRect) => {
-                    const offsets = [
-                        { x: 0, y: -22 }, { x: 0, y: 22 },
-                        { x: -30, y: -11 }, { x: 30, y: -11 },
-                        { x: -30, y: 11 }, { x: 30, y: 11 },
-                        { x: -50, y: 0 }, { x: 50, y: 0 },
-                        { x: 0, y: -35 }, { x: 0, y: 35 },
-                    ];
-                    for (const offset of offsets) {
-                        const testRect = {
-                            left: labelRect.left + offset.x,
-                            right: labelRect.right + offset.x,
-                            top: labelRect.top + offset.y,
-                            bottom: labelRect.bottom + offset.y
-                        };
-                        let overlaps = false;
-                        for (const placed of labelPositions) {
-                            if (rectsOverlap(testRect, placed)) { overlaps = true; break; }
-                        }
-                        if (testRect.left < chartArea.left || testRect.right > chartArea.right ||
-                            testRect.top < chartArea.top || testRect.bottom > chartArea.bottom) overlaps = true;
-                        if (!overlaps) return { x: labelRect.x + offset.x, y: labelRect.y + offset.y };
+                const meta = chart.getDatasetMeta(0);
+                meta.data.forEach((point, index) => {
+                    const dataPoint = chart._bubbleData[index];
+                    if (dataPoint) {
+                        ctx.fillText(dataPoint.name, point.x, point.y);
                     }
-                    return { x: labelRect.x, y: labelRect.y };
-                };
-
-                chart.data.datasets.forEach((dataset, datasetIndex) => {
-                    const meta = chart.getDatasetMeta(datasetIndex);
-                    meta.data.forEach((point, index) => {
-                        const dataPoint = chart._bubbleData[index];
-                        if (dataPoint) {
-                            const baseY = point.y - point.options.radius - 6;
-                            const baseX = point.x;
-                            const labelSize = estimateLabelSize(dataPoint.name);
-                            let labelRect = {
-                                x: baseX, y: baseY,
-                                left: baseX - labelSize.width / 2,
-                                right: baseX + labelSize.width / 2,
-                                top: baseY - labelSize.height / 2,
-                                bottom: baseY + labelSize.height / 2
-                            };
-                            if (labelRect.top < chartArea.top) {
-                                labelRect.y = point.y + point.options.radius + 14;
-                                labelRect.top = labelRect.y - labelSize.height / 2;
-                                labelRect.bottom = labelRect.y + labelSize.height / 2;
-                                labelRect.left = labelRect.x - labelSize.width / 2;
-                                labelRect.right = labelRect.x + labelSize.width / 2;
-                            }
-                            const finalPos = findNonOverlappingPosition(labelRect);
-                            ctx.save();
-                            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-                            ctx.beginPath();
-                            ctx.roundRect(finalPos.x - labelSize.width/2 - 4, finalPos.y - 7, labelSize.width + 8, 14, 3);
-                            ctx.fill();
-                            ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-                            ctx.lineWidth = 0.5;
-                            ctx.stroke();
-                            ctx.font = 'bold 11px Microsoft YaHei';
-                            ctx.fillStyle = '#333';
-                            ctx.textAlign = 'center';
-                            ctx.textBaseline = 'middle';
-                            ctx.fillText(dataPoint.name, finalPos.x, finalPos.y);
-                            if (Math.abs(finalPos.x - point.x) > 5 || Math.abs(finalPos.y - baseY) > 5) {
-                                ctx.strokeStyle = 'rgba(100,100,100,0.4)';
-                                ctx.lineWidth = 0.5;
-                                ctx.setLineDash([2, 2]);
-                                ctx.beginPath();
-                                ctx.moveTo(point.x, point.y - point.options.radius);
-                                ctx.lineTo(finalPos.x, finalPos.y + (finalPos.y < point.y ? 7 : -7));
-                                ctx.stroke();
-                                ctx.setLineDash([]);
-                            }
-                            ctx.restore();
-                            labelPositions.push({
-                                left: finalPos.x - labelSize.width / 2 - 4,
-                                right: finalPos.x + labelSize.width / 2 + 4,
-                                top: finalPos.y - 7,
-                                bottom: finalPos.y + 7
-                            });
-                        }
-                    });
                 });
             }
         };
@@ -358,7 +275,7 @@
                             }
                         }
                     },
-                    plugins: [labelPlugin]
+                    plugins: [centerLabelPlugin]
                 });
 
                 // 保存数据引用供插件使用
